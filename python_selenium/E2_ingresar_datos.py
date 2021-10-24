@@ -1,8 +1,10 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import time
+import unittes
 
-driver = webdriver.Chrome('/Users/fernandoespinoza/Desktop/driver/chromedriver')
+
+driver = webdriver.Chrome(executable_path=r"C:\Users\trihe\Desktop\python\driver\chromedriver.exe")
 driver.get("https://www.gmail.com")
 
 

@@ -1,31 +1,38 @@
-#from _typeshed import Self
+
+#from typeshed import Self
 import unittest
-import unittest, time, re, cgi
+#import unittest, time, re, cgi
 import os, sys, inspect
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import time
 
-class testcaseA(unittest.TestCase):
+
+class usando_unittest(unittest.TestCase):
+    @classmethod
+
     #inicializar nuestro driver
     def setUp(self):
-        self.driver = webdriver.Chrome('/Users/fernandoespinoza/Desktop/driver/chromedriver')
+        #self.driver = webdriver.Chrome('/Users/fernandoespinoza/Desktop/driver/chromedriver')
+        self.driver = webdriver.Chrome(executable_path=r"C:\Users\trihe\Desktop\python\driver\chromedriver.exe")
 
     def test_buscar(self):
-        driver =self.driver
+        driver = self.driver
         driver.get("https://www.google.com/")
-        self.assertIn("google", driver.title)
-        elemnto=driver.find_element_by_name("q")
-        elemnto.send_keys("selenium")
-        elemnto.send_keys(Keys.RETURN)
+
+        self.assertIn("Google", driver.title)
+        elemento=driver.find_element_by_name("q")
+        elemento.send_keys("selenium")
+        elemento.send_keys(Keys.RETURN)
+
         time.sleep(5)
         assert "No se encontro el elmento:" not in driver.page_source
 
-    def tearDown(self) -> None:
-        return super().tearDown()
+    @classmethod
+    def tearDownClass(cls):
+        cls.driver.quit()
 
-    if __name__ == '_main_':
-        unittest.main()   
-     
-    
-    
+
+if __name__ == "__main__":
+
+    unittest.main()  
